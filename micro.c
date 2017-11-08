@@ -6,7 +6,22 @@
  * Compile the program with `gcc micro.c -o micro`. If that ran successfully, you'll see that there will now be
  * an executable called `micro` in your directory. Execute that with the command `./micro`. What happens?
  */
-int main() {
-  // Your code here 
-}
+// int main()
+// {
+//   // Your code here
+//   int x = 5;
+//   return x;
+// }
 
+/*
+* ^^^ Does nothing (that we can see at least)! We're just returning the value here, not actually printing it :)
+*/
+
+#include <stdio.h>
+
+int main()
+{
+  int x = 5;
+  printf("x = %d", x);
+  return x;
+}

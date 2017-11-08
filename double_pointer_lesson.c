@@ -6,12 +6,13 @@
 // Makefile
 // make
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
   int a = 5;
   printf("Process memory address of a: %p\n", &a);
-  int* ap = &a;
+  int *ap = &a;
   printf("Process memory address of ap: %p\n", ap);
-  int* b;
+  int *b;
   printf("Process memory address of b: %p\n", b);
 
   // these are the same: puts is put string
@@ -27,11 +28,11 @@ int main(int argc, char** argv) {
   *b = 6;
   printf("Value of b: %d\n", *b);
   free(b);
-  int** d;
+  int **d;
   //(cp->cp->c);
   //**c = 7;
-  //printf("c: %d", **c); 
-  
+  //printf("c: %d", **c);
+
   char e = 'e';
   char f = 95;
 
@@ -39,21 +40,25 @@ int main(int argc, char** argv) {
   //let radical = {};
   //let less_radical = [];
   //less_radical.push(5);
-  
+
   int array[50];
   int i;
-  for(i = 0 ; i < 50 ; ++i ) {
-    array[i] = i*i;
+  for (i = 0; i < 50; ++i)
+  {
+    array[i] = i * i;
   }
   int ii;
-  for(ii = 0 ; ii < 50 ; ii++ ) {
+  for (ii = 0; ii < 50; ii++)
+  {
     printf("%d\n", array[ii]);
   }
 
   // pre-allocated array - not as useful
   int twoDArrayOldStyle[1000][1000];
-  for(i = 0 ; i < 1000; ++i ) {
-    for(ii = 0 ; ii < 1000; ii++ ) {
+  for (i = 0; i < 1000; ++i)
+  {
+    for (ii = 0; ii < 1000; ii++)
+    {
       twoDArrayOldStyle[i][ii] = 1;
     }
   }
@@ -65,36 +70,48 @@ int main(int argc, char** argv) {
   int n = 100000;
   int diameter = 5;
   // twoDArray is a memory address of an array of memory addresses
-  int** twoDArray;
-  twoDArray = malloc(m * sizeof(void*));
-  for(i = 0 ; i < m ; ++i ) {
+  int **twoDArray;
+  twoDArray = malloc(m * sizeof(void *));
+  for (i = 0; i < m; ++i)
+  {
     twoDArray[i] = malloc(n * sizeof(int));
   }
   puts("Can I assign memory into my 2d array?");
-  for(i = 0 ; i < m; ++i ) {
-    for(ii = 0 ; ii < n; ii++ ) {
-      if( sqrt(abs(i-m/2)*abs(ii-n/2)) < diameter && sqrt(abs(i-m/2)*abs(ii-n/2) > diameter-1 ) ) {
+  for (i = 0; i < m; ++i)
+  {
+    for (ii = 0; ii < n; ii++)
+    {
+      if (sqrt(abs(i - m / 2) * abs(ii - n / 2)) < diameter && sqrt(abs(i - m / 2) * abs(ii - n / 2) > diameter - 1))
+      {
         twoDArray[i][ii] = 1;
       }
-      else {
+      else
+      {
         twoDArray[i][ii] = 0;
       }
     }
   }
-  /*
-  for(i = 0 ; i < m ; ++i ) {
-    for(ii = 0 ; ii < n; ii++ ) {
+
+  for (i = 0; i < m; ++i)
+  {
+    for (ii = 0; ii < n; ii++)
+    {
       printf("%d", twoDArray[i][ii]);
     }
     printf("\n");
   }
-  */
+
   char x = getc(stdin);
-  for(i = 0 ; i < m ; ++i ) {
+  for (i = 0; i < m; ++i)
+  {
     free(twoDArray[i]);
   }
   free(twoDArray);
-  
-  // TODO: how to convert an integer value into a binary output / memory address
-}
 
+  // TODO: how to convert an integer value into a binary output / memory address
+  int int_to_int(int k)
+  {
+    return (k == 0 || k == 1 ? k : ((k % 2) + 10 * int_to_int(k / 2)));
+  }
+  printf("%d", int_to_int(5))
+}
